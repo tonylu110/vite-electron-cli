@@ -14,41 +14,56 @@ program.version(packData.version)
 program.command('create <name>')
   .description('create a vite + vue3 + electron template')
   .action(name => {
-    const gitUrl = 'https://github.com/tonylu110/vite-vue-electron.git'
+    console.log(chalk.blue(`create ${name} of vite + vue3 + electron template`))
     const spinner = ora('waiting ')
-    spinner.start()
-    download(gitUrl, `./${name}`, (err) => {
-      if (err) {
-        console.log(`${ls.error}${chalk.red(`download template error`)}`)
-        spinner.stop()
-        return
+    inquirer.prompt([
+      {
+        type: 'list',
+        name: 'sm',
+        message: 'use whitch Source Mirror',
+        choices: [
+          'GitHub',
+          'Gitee'
+        ]
+      },
+      {
+        type: 'input',
+        name: 'name',
+        message: 'your project name',
+        default: name
       }
-      inquirer.prompt([
-        {
-          type: 'input',
-          name: 'name',
-          message: 'please input your project name'
+    ]).then(answers => {
+      let gitUrl = 'https://github.com/tonylu110/vite-vue-electron.git'
+      spinner.start()
+      if (answers.sm === 'Gitee') {
+        gitUrl = 'https://gitee.com/tonylu110/vite-vue-electron.git'
+      }
+      download(gitUrl, `./${name}`, (err) => {
+        if (err) {
+          console.log(`${ls.error}${chalk.red(`download template error`)}`)
+          spinner.stop()
+          return
         }
-      ]).then(answers => {
         const packageJson = `${name}/package.json`
         const packageContent = fs.readFileSync(packageJson, 'utf-8')
-        const packageResult = handlebars.compile(packageContent)(answers)
-        console.log(packageResult);
+        const packageResult = handlebars.compile(packageContent)({
+          name: answers.name
+        })
+        fs.writeFileSync(packageJson, packageResult)
+        shell.rm('-rf', `${name}/.git`)
+        shell.rm('-rf', `${name}/pnpm-lock.yaml`)
+        shell.rm('-rf', `${name}/LICENSE`)
+        spinner.stop()
+        console.log('')
+        console.log(`${ls.success}${chalk.green(`create template success`)}`)
+        console.log('you can run ')
+        console.log('')
+        console.log(`cd ${name}`)
+        console.log('')
+        console.log('npm install')
+        console.log('npm run electron:server')
+        console.log('')
       })
-      shell.rm('-rf', `${name}/.git`)
-      shell.rm('-rf', `${name}/pnpm-lock.yaml`)
-      shell.rm('-rf', `${name}/LICENSE`)
-      spinner.stop()
-      console.log('')
-      console.log(`${ls.success}${chalk.green(`create template success`)}`)
-      console.log('you can run ')
-      console.log('')
-      console.log(`cd ${name}`)
-      console.log('')
-      console.log('npm install')
-      console.log('npm run electron:server')
-      console.log('')
     })
-    console.log(chalk.blue(`create ${name} of vite + vue3 + electron template`))
   })
 program.parse(process.argv)
