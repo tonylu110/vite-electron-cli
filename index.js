@@ -31,6 +31,16 @@ program.command('create <name>')
         name: 'name',
         message: 'your project name',
         default: name
+      },
+      {
+        type: 'list',
+        name: 'pm',
+        message: 'choose your package manager',
+        choices: [
+          'npm',
+          'yarn',
+          'pnpm'
+        ]
       }
     ]).then(answers => {
       let gitUrl = 'https://github.com/tonylu110/vite-vue-electron.git'
@@ -47,7 +57,8 @@ program.command('create <name>')
         const packageJson = `${name}/package.json`
         const packageContent = fs.readFileSync(packageJson, 'utf-8')
         const packageResult = handlebars.compile(packageContent)({
-          name: answers.name
+          name: answers.name,
+          pm: answers.pm + `${answers.pm === 'npm' ? ' run' : ''}`
         })
         fs.writeFileSync(packageJson, packageResult)
         shell.rm('-rf', `${name}/.git`)
@@ -60,8 +71,8 @@ program.command('create <name>')
         console.log('')
         console.log(`cd ${name}`)
         console.log('')
-        console.log('npm install')
-        console.log('npm run electron:server')
+        console.log(`${answers.pm} install`)
+        console.log(`${answers.pm} ${answers.pm === 'npm' ? 'run ' : ''}electron:serve`)
         console.log('')
       })
     })
