@@ -9,6 +9,7 @@ const packData = require('./package.json')
 const handlebars = require('handlebars')
 const inquirer = require('inquirer')
 const fs = require('fs')
+const menu = require('./menu')
 
 program.version(packData.version)
 program.command('create <name>')
@@ -16,33 +17,7 @@ program.command('create <name>')
   .action(name => {
     console.log(chalk.blue(`create ${name} of vite + vue3 + electron template`))
     const spinner = ora('waiting ')
-    inquirer.prompt([
-      {
-        type: 'list',
-        name: 'sm',
-        message: 'use whitch Source Mirror',
-        choices: [
-          'GitHub',
-          'Gitee'
-        ]
-      },
-      {
-        type: 'input',
-        name: 'name',
-        message: 'your project name',
-        default: name
-      },
-      {
-        type: 'list',
-        name: 'pm',
-        message: 'choose your package manager',
-        choices: [
-          'npm',
-          'yarn',
-          'pnpm'
-        ]
-      }
-    ]).then(answers => {
+    inquirer.prompt(menu(name)).then(answers => {
       let gitUrl = 'https://github.com/tonylu110/vite-vue-electron.git'
       spinner.start()
       if (answers.sm === 'Gitee') {
