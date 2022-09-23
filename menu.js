@@ -10,6 +10,12 @@ module.exports = function (name) {
       ]
     },
     {
+      type: 'confirm',
+      name: 'mica',
+      message: 'use like windows 11 mica (alpha)',
+      default: false
+    },
+    {
       type: 'input',
       name: 'name',
       message: 'your project name',

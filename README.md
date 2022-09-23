@@ -19,11 +19,16 @@ pnpm install vite-vue-electron --global
 vite-electron create <name>
 ```
 
+- After you can choose use like Windows 11 mica Windows
+![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/b70305f1-9fc1-4b7d-a3fe-a991b910b92a.png)
+It's review
+![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/22c2409d-9c89-4489-9bf0-ba60fe18e4bd.png)
+
 - choose your package manager
-![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/c260daa6-89e5-4486-8e81-72daa52eae25.png)
+![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/bfd7df13-579c-48b1-803b-c764ea31fee5.png)
 
 - Then finish create the project
-![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/bafa07b6-7cd8-4f25-b12f-7c8e224d3780.png)
+![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/01eee27e-3bfb-4e6a-9379-1df807fef603.png)
 
 - After create you need run to cd your project
 ```

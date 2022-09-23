@@ -18,10 +18,10 @@ program.command('create <name>')
     console.log(chalk.blue(`create ${name} of vite + vue3 + electron template`))
     const spinner = ora('waiting ')
     inquirer.prompt(menu(name)).then(answers => {
-      let gitUrl = 'https://github.com/tonylu110/vite-vue-electron.git'
+      let gitUrl = `https://${answers.sm.toLowerCase()}.com/tonylu110/vite-vue-electron.git`
       spinner.start()
-      if (answers.sm === 'Gitee') {
-        gitUrl = 'https://gitee.com/tonylu110/vite-vue-electron.git'
+      if (answers.mica) {
+        gitUrl = `https://${answers.sm.toLowerCase()}.com/tonylu110/vite-vue-electron-mica.git`
       }
       download(gitUrl, `./${name}`, (err) => {
         if (err) {
