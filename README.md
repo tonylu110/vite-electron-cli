@@ -21,10 +21,10 @@ vite-electron create <name>
 
 - After you can choose use like Windows 11 mica Windows
 ![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/b70305f1-9fc1-4b7d-a3fe-a991b910b92a.png)
-It's review
+It's preview
 ![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/22c2409d-9c89-4489-9bf0-ba60fe18e4bd.png)
 
-- choose your package manager
+- Choose your package manager
 ![](https://vkceyugu.cdn.bspapp.com/VKCEYUGU-0956b3c3-b4ed-405b-812d-b6b32dfbc322/bfd7df13-579c-48b1-803b-c764ea31fee5.png)
 
 - Then finish create the project
